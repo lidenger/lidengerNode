@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
+var AuthRoute=require('./routes/AuthRoute');
 var userAllInfoRouter = require('./routes/userInfoRoute');
 
 var app = express();
@@ -20,8 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req,res,next){
-    console.log(req);
-    next();
+    AuthRoute.auth(req,res,next);
 });
 
 app.use('/user',userAllInfoRouter);
