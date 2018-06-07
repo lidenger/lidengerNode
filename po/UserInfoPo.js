@@ -1,20 +1,15 @@
-var UserInfoPo=function(){
+var UserInfoPo=function(data){
     //caId 用户编号
-    var caId="";
+    this.caId=data.caId;
     //用户账号
-    var account="";
+    this.account=data.account;
     //用户姓名
-    var name="";
+    this.name=data.name;
     //创建时间
-    var createTime="";
+    this.createTime=data.createTime;
     //基地code
-    var instituteNumber="";
+    this.instituteNumber=data.instituteNumber;
     Object.freeze(this);
-
-    this.setCaId=function(caId){
-
-    };
-
 };
 
 module.exports = UserInfoPo;

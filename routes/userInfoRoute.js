@@ -3,37 +3,41 @@ var UserService=require('../services/UserService');
 var UserInfoPo=require('../po/UserInfoPo');
 var router = express.Router();
 
-/* GET users listing. */
+/**
+ * 查询用户
+ */
 router.get('/select', function(req, res, next) {
     UserService.findAllUserInfo(function(data){
         res.send(data);
     });
 });
+
 /**
  * 新增用户
  */
 router.get('/add', function(req, res, next) {
-    var userInfoPo=new UserInfoPo();
-    userInfoPo.account=req.query.account;
-    userInfoPo.name=req.query.name;
-    userInfoPo.instituteNumber=req.query.instituteNumber;
+    var userInfoPo=new UserInfoPo(req.query||req.body);
     UserService.addUserInfo(userInfoPo,function(result){
-        res.send(req.query);
+        res.send(result);
     });
 });
+
 /**
  * 更新用户
  */
 router.get('/update', function(req, res, next) {
-    UserService.findAllUserInfo(function(data){
+    var userInfoPo=new UserInfoPo(req.query||req.body);
+    UserService.updateUserInfo(userInfoPo,function(data){
         res.send(data);
     });
 });
+
 /**
  * 删除用户
  */
 router.get('/delete', function(req, res, next) {
-    UserService.findAllUserInfo(function(data){
+    var caId=req.query.caId;
+    UserService.removeUserInfo(caId,function(data){
         res.send(data);
     });
 });
