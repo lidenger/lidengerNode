@@ -9,9 +9,9 @@ var Result=require('../common/ResultPo');
 var BaseDao=function(){};
 
 var conn=mysql.createConnection({
-    host:'127.0.0.1',
+    host:'192.168.8.155',
     user:'root',
-    password:'6635',
+    password:'root',
     port:'3306',
     database:'lytest'
 });
