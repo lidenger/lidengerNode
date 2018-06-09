@@ -9,11 +9,11 @@ var Result=require('../common/ResultPo');
 var BaseDao=function(){};
 
 var conn=mysql.createConnection({
-    host:'192.168.8.155',
+    host:'140.143.158.35',
     user:'root',
-    password:'root',
+    password:'#Liya6635#',
     port:'3306',
-    database:'lytest'
+    database:'denglier'
 });
 conn.connect();
 BaseDao.test=function(){
