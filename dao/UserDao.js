@@ -11,7 +11,7 @@ UserDao.test=function(){
  * @param resultCallback 结果回调函数
  */
 UserDao.findAllUserInfo=function(resultCallback){
-    var sql="select caId,account,name,createTime,instituteNumber from userInfo";
+    var sql="select caId,account,name,createTime,instituteNumber from user_info";
     console.log("UserDao.findAllUserInfo sql>>>"+sql);
     BaseDao.select(sql,null,resultCallback);
 };
@@ -20,7 +20,7 @@ UserDao.findAllUserInfo=function(resultCallback){
  * 存储用户信息
  */
 UserDao.insertUserInfo=function(userInfoPo,resultCallback){
-    var sql="insert into userInfo(account,name,instituteNumber,createTime,caId)" +
+    var sql="insert into user_info(account,name,instituteNumber,createTime,caId)" +
         "values(?,?,?,now(),replace(uuid(),'-',''))";
     console.log("UserDao.insertUserInfo sql>>>"+sql);
     var params=[userInfoPo.account,userInfoPo.name,userInfoPo.instituteNumber];
@@ -32,7 +32,7 @@ UserDao.insertUserInfo=function(userInfoPo,resultCallback){
  * 更新用户信息
  */
 UserDao.updateUserInfo=function(userInfoPo,resultCallback){
-    var sql="update userInfo set ";
+    var sql="update user_info set ";
     var params=[];
     if(userInfoPo.account){
         sql+="account=?, ";
@@ -58,7 +58,7 @@ UserDao.updateUserInfo=function(userInfoPo,resultCallback){
  * 删除用户信息
  */
 UserDao.deleteUserInfo=function(caId,resultCallback){
-    var sql="delete from userInfo where caId=? ";
+    var sql="delete from user_info where caId=? ";
     console.log("UserDao.deleteUserInfo sql>>>"+sql);
     BaseDao.delete(sql,[caId],resultCallback);
     console.log("UserDao.deleteUserInfo params>>>"+caId);
