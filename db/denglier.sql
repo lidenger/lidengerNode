@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2018-06-12 14:46:23
+Date: 2018-06-12 20:05:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,8 +25,8 @@ CREATE TABLE `account` (
   `pwd` varchar(100) DEFAULT '' COMMENT '密码',
   `phone` varchar(20) DEFAULT '' COMMENT '手机号',
   `enable` tinyint(1) DEFAULT '1' COMMENT '是否启用，1启用，0禁用',
-  `createTime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `updateTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`account_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -65,8 +65,8 @@ CREATE TABLE `resource` (
   `is_menu` tinyint(1) DEFAULT '0' COMMENT '是否为菜单项',
   `enable` tinyint(1) DEFAULT '1' COMMENT '是否启用，0禁用，1启用',
   `remark` varchar(500) DEFAULT '' COMMENT '备注',
-  `createTime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `updateTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`resource_id`),
   KEY `fk_resource_parent_id` (`resource_parent_id`),
   CONSTRAINT `fk_resource_parent_id` FOREIGN KEY (`resource_parent_id`) REFERENCES `resource` (`resource_id`)

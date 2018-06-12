@@ -1,5 +1,7 @@
 var UserDao=require('../dao/UserDao');
 var Result=require('../common/ResultPo');
+var md5 = require("blueimp-md5");
+
 var UserService=function(){};
 
 UserService.test=function(){
@@ -10,6 +12,7 @@ UserService.test=function(){
  * 查询所有用户信息
  */
 UserService.findAllUserInfo=function(resultCallback){
+    console.log("AuthService:::"+md5("123456"));
     UserDao.findAllUserInfo(function(result){
         resultCallback(result);
     });
