@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2018-06-12 14:36:30
+Date: 2018-06-12 14:46:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -86,19 +86,19 @@ INSERT INTO `resource` VALUES ('R0104', 'removeUserInfo', '删除用户信息', 
 -- ----------------------------
 DROP TABLE IF EXISTS `resource_link_role`;
 CREATE TABLE `resource_link_role` (
-  `resource_id` varchar(100) NOT NULL,
   `role_id` int(11) NOT NULL,
+  `resource_id` varchar(100) NOT NULL,
   PRIMARY KEY (`resource_id`,`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of resource_link_role
 -- ----------------------------
-INSERT INTO `resource_link_role` VALUES ('R01', '1');
-INSERT INTO `resource_link_role` VALUES ('R0101', '1');
-INSERT INTO `resource_link_role` VALUES ('R0102', '1');
-INSERT INTO `resource_link_role` VALUES ('R0103', '1');
-INSERT INTO `resource_link_role` VALUES ('R0104', '1');
+INSERT INTO `resource_link_role` VALUES ('1', 'R01');
+INSERT INTO `resource_link_role` VALUES ('1', 'R0101');
+INSERT INTO `resource_link_role` VALUES ('1', 'R0102');
+INSERT INTO `resource_link_role` VALUES ('1', 'R0103');
+INSERT INTO `resource_link_role` VALUES ('1', 'R0104');
 
 -- ----------------------------
 -- Table structure for role
