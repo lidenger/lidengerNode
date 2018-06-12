@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 192.168.8.155
-Source Server Version : 50630
-Source Host           : 192.168.8.155:3306
-Source Database       : lytest
+Source Server         : 140.143.158.35
+Source Server Version : 50722
+Source Host           : 140.143.158.35:3306
+Source Database       : denglier
 
 Target Server Type    : MYSQL
-Target Server Version : 50630
+Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2018-06-08 17:34:54
+Date: 2018-06-12 14:36:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,20 +37,20 @@ INSERT INTO `account` VALUES ('1', 'ly6635', '123', '13920263513', '1', '2018-06
 INSERT INTO `account` VALUES ('2', 'dfc', '456', '13920240000', '1', '2018-06-08 16:47:07', null);
 
 -- ----------------------------
--- Table structure for accountlinkrole
+-- Table structure for account_link_role
 -- ----------------------------
-DROP TABLE IF EXISTS `accountlinkrole`;
-CREATE TABLE `accountlinkrole` (
+DROP TABLE IF EXISTS `account_link_role`;
+CREATE TABLE `account_link_role` (
   `account_id` bigint(20) NOT NULL,
   `role_id` int(11) NOT NULL,
   PRIMARY KEY (`account_id`,`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of accountlinkrole
+-- Records of account_link_role
 -- ----------------------------
-INSERT INTO `accountlinkrole` VALUES ('1', '1');
-INSERT INTO `accountlinkrole` VALUES ('2', '1');
+INSERT INTO `account_link_role` VALUES ('1', '1');
+INSERT INTO `account_link_role` VALUES ('2', '1');
 
 -- ----------------------------
 -- Table structure for resource
@@ -82,23 +82,23 @@ INSERT INTO `resource` VALUES ('R0103', 'addUserInfo', '新增用户信息', '/u
 INSERT INTO `resource` VALUES ('R0104', 'removeUserInfo', '删除用户信息', '/user/delete', 'R01', '0', '1', '', '2018-06-08 14:30:15', null);
 
 -- ----------------------------
--- Table structure for resourcelinkrole
+-- Table structure for resource_link_role
 -- ----------------------------
-DROP TABLE IF EXISTS `resourcelinkrole`;
-CREATE TABLE `resourcelinkrole` (
+DROP TABLE IF EXISTS `resource_link_role`;
+CREATE TABLE `resource_link_role` (
   `resource_id` varchar(100) NOT NULL,
   `role_id` int(11) NOT NULL,
   PRIMARY KEY (`resource_id`,`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of resourcelinkrole
+-- Records of resource_link_role
 -- ----------------------------
-INSERT INTO `resourcelinkrole` VALUES ('R01', '1');
-INSERT INTO `resourcelinkrole` VALUES ('R0101', '1');
-INSERT INTO `resourcelinkrole` VALUES ('R0102', '1');
-INSERT INTO `resourcelinkrole` VALUES ('R0103', '1');
-INSERT INTO `resourcelinkrole` VALUES ('R0104', '1');
+INSERT INTO `resource_link_role` VALUES ('R01', '1');
+INSERT INTO `resource_link_role` VALUES ('R0101', '1');
+INSERT INTO `resource_link_role` VALUES ('R0102', '1');
+INSERT INTO `resource_link_role` VALUES ('R0103', '1');
+INSERT INTO `resource_link_role` VALUES ('R0104', '1');
 
 -- ----------------------------
 -- Table structure for role
@@ -120,10 +120,10 @@ CREATE TABLE `role` (
 INSERT INTO `role` VALUES ('1', 'admin', '1', '', '2018-06-08 14:35:47', null);
 
 -- ----------------------------
--- Table structure for userinfo
+-- Table structure for user_info
 -- ----------------------------
-DROP TABLE IF EXISTS `userinfo`;
-CREATE TABLE `userinfo` (
+DROP TABLE IF EXISTS `user_info`;
+CREATE TABLE `user_info` (
   `caId` varchar(36) NOT NULL COMMENT 'ca Id',
   `account` varchar(50) DEFAULT NULL COMMENT '用户名',
   `name` varchar(255) DEFAULT NULL COMMENT '姓名',
@@ -132,16 +132,16 @@ CREATE TABLE `userinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of userinfo
+-- Records of user_info
 -- ----------------------------
-INSERT INTO `userinfo` VALUES ('7d77eb05a4e14c119a23fba77d088a0b', '', '牛平平', '2018-03-13 18:47:34', 'WTB430102001');
-INSERT INTO `userinfo` VALUES ('a020c1604a2a4621b49903a57841c238', ' 0800061580 ', ' 宋嘉懿 ', '2018-03-13 18:47:34', 'WTB220104002');
-INSERT INTO `userinfo` VALUES ('0a8d60726cf44eb3af5557461a319949', ' 0800061711 ', ' 刘朝曦 ', '2018-03-13 18:47:34', 'WTB220104002');
-INSERT INTO `userinfo` VALUES ('690ac5e9b625432f952f76c846a0941f', ' 0800061767 ', ' 谭淋升 ', '2018-03-13 18:47:34', 'WTB220104002');
-INSERT INTO `userinfo` VALUES ('2d067f9056f744b3b8150fe78eb9000c', ' 0800062000 ', ' 徐尧 ', '2018-03-13 18:47:34', 'WTB220104002');
-INSERT INTO `userinfo` VALUES ('1c896b4c8701497d960bfdeb2fb36011', ' 0800062263 ', ' 李贺 ', '2018-03-13 18:47:34', 'WTB220104002');
-INSERT INTO `userinfo` VALUES ('8951c1f523cb4c26adbf34f34bce90e6', ' 0800062321 ', ' 綦俊 ', '2018-03-13 18:47:34', 'WTB220104002');
-INSERT INTO `userinfo` VALUES ('752ba6afaf4f4a07ba4683dd512a00af', ' 0800062325 ', ' 单雪 ', '2018-03-13 18:47:34', 'WTB220104002');
-INSERT INTO `userinfo` VALUES ('c33702772a7e4639b396ade68d8df9be', ' 0800062426 ', ' 李智 ', '2018-03-13 18:47:34', 'WTB220104002');
-INSERT INTO `userinfo` VALUES ('f91a819eff904ca9b4d804bb21444927', ' 0800360795 ', ' 黄东旭 ', '2018-03-13 18:47:34', 'WTB220104002');
-INSERT INTO `userinfo` VALUES ('1d05ca856afd11e88e70b06ebf5f3b92', 'xiaolin', '250', '2018-06-08 17:19:36', 'h12w3sdf');
+INSERT INTO `user_info` VALUES ('7d77eb05a4e14c119a23fba77d088a0b', '', '牛平平', '2018-03-13 18:47:34', 'WTB430102001');
+INSERT INTO `user_info` VALUES ('a020c1604a2a4621b49903a57841c238', ' 0800061580 ', ' 宋嘉懿 ', '2018-03-13 18:47:34', 'WTB220104002');
+INSERT INTO `user_info` VALUES ('0a8d60726cf44eb3af5557461a319949', ' 0800061711 ', ' 刘朝曦 ', '2018-03-13 18:47:34', 'WTB220104002');
+INSERT INTO `user_info` VALUES ('690ac5e9b625432f952f76c846a0941f', ' 0800061767 ', ' 谭淋升 ', '2018-03-13 18:47:34', 'WTB220104002');
+INSERT INTO `user_info` VALUES ('2d067f9056f744b3b8150fe78eb9000c', ' 0800062000 ', ' 徐尧 ', '2018-03-13 18:47:34', 'WTB220104002');
+INSERT INTO `user_info` VALUES ('1c896b4c8701497d960bfdeb2fb36011', ' 0800062263 ', ' 李贺 ', '2018-03-13 18:47:34', 'WTB220104002');
+INSERT INTO `user_info` VALUES ('8951c1f523cb4c26adbf34f34bce90e6', ' 0800062321 ', ' 綦俊 ', '2018-03-13 18:47:34', 'WTB220104002');
+INSERT INTO `user_info` VALUES ('752ba6afaf4f4a07ba4683dd512a00af', ' 0800062325 ', ' 单雪 ', '2018-03-13 18:47:34', 'WTB220104002');
+INSERT INTO `user_info` VALUES ('c33702772a7e4639b396ade68d8df9be', ' 0800062426 ', ' 李智 ', '2018-03-13 18:47:34', 'WTB220104002');
+INSERT INTO `user_info` VALUES ('f91a819eff904ca9b4d804bb21444927', ' 0800360795 ', ' 黄东旭 ', '2018-03-13 18:47:34', 'WTB220104002');
+INSERT INTO `user_info` VALUES ('1d05ca856afd11e88e70b06ebf5f3b92', 'xiaolin', '2222', '2018-06-08 17:19:36', 'h12w3sdf');
