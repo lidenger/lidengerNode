@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2018-06-12 20:05:14
+Date: 2018-06-15 05:19:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,20 +21,21 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `account_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(100) DEFAULT '' COMMENT '用户姓名',
+  `user_name` varchar(100) DEFAULT '' COMMENT '用户名',
   `pwd` varchar(100) DEFAULT '' COMMENT '密码',
   `phone` varchar(20) DEFAULT '' COMMENT '手机号',
   `enable` tinyint(1) DEFAULT '1' COMMENT '是否启用，1启用，0禁用',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`account_id`)
+  PRIMARY KEY (`account_id`),
+  UNIQUE KEY `un_account_user_name` (`user_name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of account
 -- ----------------------------
-INSERT INTO `account` VALUES ('1', 'ly6635', '123', '13920263513', '1', '2018-06-08 14:34:29', null);
-INSERT INTO `account` VALUES ('2', 'dfc', '456', '13920240000', '1', '2018-06-08 16:47:07', null);
+INSERT INTO `account` VALUES ('1', 'ly6635', '202cb962ac59075b964b07152d234b70', '13920263513', '1', '2018-06-08 14:34:29', '2018-06-15 02:40:16');
+INSERT INTO `account` VALUES ('2', 'dfc', '250cf8b51c773f3f8dc8b4be867a9a02', '13920240000', '1', '2018-06-08 16:47:07', '2018-06-15 02:40:56');
 
 -- ----------------------------
 -- Table structure for account_link_role
@@ -118,6 +119,61 @@ CREATE TABLE `role` (
 -- Records of role
 -- ----------------------------
 INSERT INTO `role` VALUES ('1', 'admin', '1', '', '2018-06-08 14:35:47', null);
+
+-- ----------------------------
+-- Table structure for system_config
+-- ----------------------------
+DROP TABLE IF EXISTS `system_config`;
+CREATE TABLE `system_config` (
+  `config_key` varchar(100) NOT NULL COMMENT '系统配置key',
+  `config_value` varchar(100) DEFAULT NULL COMMENT '配置值',
+  `config_desc` varchar(200) DEFAULT '' COMMENT '配置说明',
+  `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '数据修改时间',
+  PRIMARY KEY (`config_key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of system_config
+-- ----------------------------
+INSERT INTO `system_config` VALUES ('token_valid_minute', '30', 'token有效时间', '2018-06-15 04:35:29');
+
+-- ----------------------------
+-- Table structure for token_log
+-- ----------------------------
+DROP TABLE IF EXISTS `token_log`;
+CREATE TABLE `token_log` (
+  `token` varchar(100) NOT NULL,
+  `user_name` varchar(100) NOT NULL COMMENT '用户名',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'token创建时间',
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `visit_num` int(11) DEFAULT '0' COMMENT '访问次数',
+  PRIMARY KEY (`token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of token_log
+-- ----------------------------
+INSERT INTO `token_log` VALUES ('07459ef894dbc3c33e6d41c2deb9873c', 'ly6635', '2018-06-15 04:10:23', null, '0');
+INSERT INTO `token_log` VALUES ('45d99c9bfacca475cf23e90d4d5cfd07', 'ly6635', '2018-06-15 05:17:29', '2018-06-15 01:18:04', '2');
+INSERT INTO `token_log` VALUES ('4680dbbd4a520cc44b0e4b16c8572e8e', 'ly6635', '2018-06-15 04:18:24', '2018-06-15 04:08:34', '1');
+INSERT INTO `token_log` VALUES ('f6e0a0648dba6629026f6cfb0855f8a0', 'ly6635', '2018-06-15 05:03:01', '2018-06-15 05:03:01', '0');
+
+-- ----------------------------
+-- Table structure for unauth_resource
+-- ----------------------------
+DROP TABLE IF EXISTS `unauth_resource`;
+CREATE TABLE `unauth_resource` (
+  `id` varchar(30) NOT NULL COMMENT '非权限资源',
+  `unauth_name` varchar(100) DEFAULT NULL COMMENT '非权限资源说明',
+  `url` varchar(300) DEFAULT NULL COMMENT '请求路径',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of unauth_resource
+-- ----------------------------
+INSERT INTO `unauth_resource` VALUES ('un001', '登录', '/login');
+INSERT INTO `unauth_resource` VALUES ('un002', '登出', '/logout');
 
 -- ----------------------------
 -- Table structure for user_info
