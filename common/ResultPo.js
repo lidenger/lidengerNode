@@ -19,6 +19,8 @@ Result.TYPE_DELETE=2;
 Result.TYPE_UPDATE=3;
 //操作类型-新增
 Result.TYPE_INSERT=4;
+//操作类型-权限操作
+Result.TYPE_AUTH=5;
 //操作类型-未知
 Result.TYPE_UNKNOWN=-1;
 
@@ -33,6 +35,18 @@ Result.success=function(data,type){
 
 Result.notAuth=function(){
     return new Result(Result.NOT_AUTH,"权限不足或资源不存在",Result.TYPE_UNKNOWN);
+};
+
+Result.noToken=function(){
+    return new Result(Result.FAILURE,"token不存在",Result.TYPE_AUTH);
+};
+
+Result.invalidToken=function(){
+    return new Result(Result.FAILURE,"token无效",Result.TYPE_AUTH);
+};
+
+Result.paramsErr=function(){
+    return new Result(Result.FAILURE,"参数不正确",Result.TYPE_SELECT);
 };
 
 module.exports = Result;
