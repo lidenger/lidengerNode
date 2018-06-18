@@ -6,15 +6,15 @@ var AuthService=require('../services/AuthService');
 
 /**
  * 登录
+ * 请求方式：post
  */
-router.get('/login', function(req, res, next) {
-    var loginPo=new LoginPo(req.query||req.body);
+router.post('/login', function(req, res, next) {
+    var loginPo=new LoginPo(req.body);
     AuthService.login(loginPo,function(result){
         res.send(result);
     });
-
-
 });
+
 
 
 module.exports = router;

@@ -6,17 +6,18 @@ var router = express.Router();
 /**
  * 查询用户
  */
-router.get('/select', function(req, res, next) {
+router.post('/select', function(req, res, next) {
     UserService.findAllUserInfo(function(data){
         res.send(data);
     });
 });
 
+
 /**
  * 新增用户
  */
-router.get('/add', function(req, res, next) {
-    var userInfoPo=new UserInfoPo(req.query||req.body);
+router.post('/add', function(req, res, next) {
+    var userInfoPo=new UserInfoPo(req.body);
     UserService.addUserInfo(userInfoPo,function(result){
         res.send(result);
     });
@@ -25,8 +26,8 @@ router.get('/add', function(req, res, next) {
 /**
  * 更新用户
  */
-router.get('/update', function(req, res, next) {
-    var userInfoPo=new UserInfoPo(req.query||req.body);
+router.post('/update', function(req, res, next) {
+    var userInfoPo=new UserInfoPo(req.body);
     UserService.updateUserInfo(userInfoPo,function(data){
         res.send(data);
     });
@@ -35,8 +36,8 @@ router.get('/update', function(req, res, next) {
 /**
  * 删除用户
  */
-router.get('/delete', function(req, res, next) {
-    var caId=req.query.caId;
+router.post('/delete', function(req, res, next) {
+    var caId=req.body.caId;
     UserService.removeUserInfo(caId,function(data){
         res.send(data);
     });

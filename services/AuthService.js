@@ -94,7 +94,7 @@ AuthService.auth=function(req,res,next){
         next();
         return;
     }
-    var token=req.query.token;
+    var token=req.query.token||req.body.token||req.header("token");
     if(!token){
         res.send(Result.noToken());
         return;
