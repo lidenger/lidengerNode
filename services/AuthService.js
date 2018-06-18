@@ -140,7 +140,7 @@ AuthService.login=function(loginPo,resultCallback){
         }else{
             resultCallback(new Result(0,{token:""},Result.TYPE_AUTH));
         }
-    })
+    });
 };
 
 /**
